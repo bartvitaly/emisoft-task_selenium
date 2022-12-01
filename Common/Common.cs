@@ -34,6 +34,7 @@ namespace emsisoft_task_selenium
         {
             var client = new WebClient();
             string url = webElement.GetAttribute("href");
+            System.IO.Directory.CreateDirectory(download_directory);
             client.DownloadFile(url, download_directory + GetFileNameFromUrl(url));
         }
     }
