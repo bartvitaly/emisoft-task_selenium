@@ -24,18 +24,18 @@ namespace emsisoft_task_selenium
             return driver;
         }
 
-        public static string GetFileNameFromUrl(string url)
+        public static string get_file_name_from_url(string url)
         {
             string[] array = url.Split('/');
             return array[array.Length - 1];
         }
 
-        public static void DownloadFile(IWebElement webElement)
+        public static void download_file(IWebElement webElement)
         {
             var client = new WebClient();
             string url = webElement.GetAttribute("href");
             System.IO.Directory.CreateDirectory(download_directory);
-            client.DownloadFile(url, download_directory + GetFileNameFromUrl(url));
+            client.DownloadFile(url, download_directory + get_file_name_from_url(url));
         }
     }
 }

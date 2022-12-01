@@ -10,7 +10,7 @@ namespace emsisoft_task_selenium
         IWebDriver driver;
 
         [SetUp]
-        public void startBrowser()
+        public void start_browser()
         {
             driver = Common.GetChromeDriver();
         }
@@ -22,10 +22,10 @@ namespace emsisoft_task_selenium
 
             HomePage home_page = new HomePage(driver);
             DownloadPage download_page = home_page.open_download_page();
-            Common.DownloadFile(download_page.web_installer);
+            Common.download_file(download_page.web_installer);
         }
 
-        [TearDown] public void stopBrowser()
+        [TearDown] public void stop_browser()
         {
             driver.Close();
         }
