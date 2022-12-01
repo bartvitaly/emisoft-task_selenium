@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using System;
 using System.IO;
 using System.Net;
 using System.Reflection;
@@ -12,6 +13,7 @@ namespace emsisoft_task_selenium
         public static string bin_dir = System.IO.Directory.GetCurrentDirectory();
         public static string home_dir = Directory.GetParent(bin_dir).Parent.FullName;
         public static string download_directory = home_dir + "\\downloads\\";
+        public static string windows_installation_file = "EmsisoftAntiMalwareWebSetup.exe";
 
         public static IWebDriver GetChromeDriver()
         { 
@@ -30,12 +32,21 @@ namespace emsisoft_task_selenium
             return array[array.Length - 1];
         }
 
-        public static void download_file(IWebElement webElement)
+        public static string download_file(IWebElement webElement)
         {
             var client = new WebClient();
             string url = webElement.GetAttribute("href");
             System.IO.Directory.CreateDirectory(download_directory);
-            client.DownloadFile(url, download_directory + get_file_name_from_url(url));
+
+            string file_path = download_directory + get_file_name_from_url(url);
+            client.DownloadFile(url, file_path);
+
+            return file_path;
+        }
+
+        public static Boolean check_file(string file_path)
+        {
+            return File.Exists(file_path);
         }
     }
 }

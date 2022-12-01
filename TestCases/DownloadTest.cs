@@ -22,7 +22,9 @@ namespace emsisoft_task_selenium
 
             HomePage home_page = new HomePage(driver);
             DownloadPage download_page = home_page.open_download_page();
-            Common.download_file(download_page.web_installer);
+            string file_path = Common.download_file(download_page.web_installer);
+            Assert.True(Common.check_file(file_path));
+            Assert.True(Common.check_file(Common.download_directory + Common.windows_installation_file));
         }
 
         [TearDown] public void stop_browser()
