@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using System.IO;
+using System.Reflection;
 
 namespace emsisoft_task_selenium
 {
@@ -10,10 +12,7 @@ namespace emsisoft_task_selenium
         [SetUp]
         public void startBrowser()
         {
-            var chromeOptions = new ChromeOptions();
-            chromeOptions.AddArguments("headless");
-            driver = new ChromeDriver(chromeOptions);
-            driver.Manage().Window.Maximize();
+            driver = Common.GetChromeDriver();
         }
 
         [Test]
@@ -23,7 +22,7 @@ namespace emsisoft_task_selenium
 
             HomePage home_page = new HomePage(driver);
             DownloadPage download_page = home_page.open_download_page();
-            Common.downloadFile(download_page.web_installer);
+            Common.DownloadFile(download_page.web_installer);
         }
 
         [TearDown] public void stopBrowser()
