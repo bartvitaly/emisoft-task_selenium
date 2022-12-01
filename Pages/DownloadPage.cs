@@ -1,11 +1,10 @@
 ﻿using OpenQA.Selenium;
-using System;
 
 namespace emsisoft_task_selenium
 {
-    internal class DownloadPage
+    class DownloadPage
     {
-        String url = "/download-installation/";
+        string url = "/download-installation/";
         public static string windows_installation_file = "EmsisoftAntiMalwareWebSetup.exe";
 
         private IWebDriver driver;

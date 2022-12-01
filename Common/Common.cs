@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace emsisoft_task_selenium
 {
-    internal class Common
+    class Common
     {
 
         public static string bin_dir = System.IO.Directory.GetCurrentDirectory();
@@ -50,7 +50,7 @@ namespace emsisoft_task_selenium
 
         public static Boolean check_file_not_empty(string file_path)
         {
-            return (new FileInfo("file").Length != 0);
+            return (new FileInfo(file_path).Length != 0);
         }
 
         public static void remove_file(string file_path)

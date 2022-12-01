@@ -3,10 +3,9 @@ using System;
 
 namespace emsisoft_task_selenium
 {
-
     class HomePage
     {
-        String url = "/anti-malware-home/";
+        string url = "/anti-malware-home/";
 
         IWebDriver driver;
         IWebElement alternative_installation_options;
