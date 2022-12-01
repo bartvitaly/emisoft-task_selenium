@@ -13,7 +13,6 @@ namespace emsisoft_task_selenium
         public static string bin_dir = System.IO.Directory.GetCurrentDirectory();
         public static string home_dir = Directory.GetParent(bin_dir).Parent.FullName;
         public static string download_directory = home_dir + "\\downloads\\";
-        public static string windows_installation_file = "EmsisoftAntiMalwareWebSetup.exe";
 
         public static IWebDriver GetChromeDriver()
         { 
@@ -47,6 +46,18 @@ namespace emsisoft_task_selenium
         public static Boolean check_file(string file_path)
         {
             return File.Exists(file_path);
+        }
+
+        public static Boolean check_file_not_empty(string file_path)
+        {
+            return (new FileInfo("file").Length != 0);
+        }
+
+        public static void remove_file(string file_path)
+        {
+            if (Common.check_file(file_path)) {
+                File.Delete(file_path);
+            }
         }
     }
 }

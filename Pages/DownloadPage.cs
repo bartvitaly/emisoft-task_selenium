@@ -6,6 +6,7 @@ namespace emsisoft_task_selenium
     internal class DownloadPage
     {
         String url = "/download-installation/";
+        public static string windows_installation_file = "EmsisoftAntiMalwareWebSetup.exe";
 
         private IWebDriver driver;
         public IWebElement web_installer;
