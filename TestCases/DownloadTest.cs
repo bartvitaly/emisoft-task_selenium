@@ -23,8 +23,8 @@ namespace emsisoft_task_selenium
             driver.Url = "http://emsisoft.com/en/anti-malware-home";
 
             HomePage home_page = new HomePage(driver);
-            DownloadPage download_page = home_page.open_download_page();
-            string file_path = Common.download_file(download_page.web_installer);
+            home_page.open_download_page();
+            string file_path = Common.download_file(driver.FindElement(DownloadPage.web_installer));
 
             Assert.True(Common.check_file(file_path));
             Assert.True(Common.check_file(expected_installation_file_path));
